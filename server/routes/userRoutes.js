@@ -7,13 +7,22 @@ const express = require('express'),
 
 // router.post('/update', controller.update)
 
-// router.post('/pantry/add', controller.insert);
+router.post('/pantry/add', controller.insert);
+
+// router.post('/pantry', controller.)
 
 // router.post('/pantry/delete', controller.delete);
 
 // router.post('/favouriteRecipes/add', controller.insert)
 
 // router.post('/favouriteRecipes/delete', controller.delete);
+
+// router.post('/profile', controller.);
+
+// router.post('/profile/editProfile', controller.)
+
+// router.post('yourRecipes', controller.yourRecipes);
+
 
 router.post('/register', controller.register);
 

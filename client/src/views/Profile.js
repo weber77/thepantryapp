@@ -4,7 +4,7 @@ export default function Home() {
 
     return <div>
         <div>
-            <img />
+            <img alt=''/>
             <span>favs links</span>
             <section>
                 <span>

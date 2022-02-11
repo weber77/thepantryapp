@@ -9,6 +9,7 @@ export default function Recipe({ recipe }) {
                 src={recipe.recipe.images.SMALL
                     ? recipe.recipe.images.SMALL.url
                     : recipe.recipe.image}
+                alt='images of food that corresponds to each recipe'
             />
             
             <a

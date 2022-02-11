@@ -6,22 +6,29 @@ import Register from './views/Register.js'
 import Profile from './views/Profile.js'
 import Recipes from './views/Recipes.js'
 import NavBar from './components/NavBar.js'
+import YourRecipes from './views/YourRecipes.js'
+import EditProfile from './views/EditProfile.js'
+import Pantry from './views/Pantry.js'
+
 import { URL } from './config'
 
 export default function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  const token = JSON.parse(localStorage.getItem('token'));
+  const [user, setUser] = useState(null)
+  let token;
 
   useEffect(
     () => {
       const verify_token = async () => {
-        if (token === null) return setIsLoggedIn(false);
         try {
+          if (!token) {
+            token = JSON.parse(localStorage.getItem('token'))
+            logout()
+          }
           axios.defaults.headers.common['Authorization'] = token;
           const response = await axios.post(`${URL}/user/verify_token`);
-          return response.data.ok ? login(token) : logout();
+          return response.data.ok ? (login(token), setUser(response.data.succ) ) : logout();
         } catch (err) {
           console.log(err);
         }
@@ -44,12 +51,15 @@ export default function App() {
   return <div>
 
     <Router>
-      <NavBar isLoggedIn={isLoggedIn} />
+      <NavBar isLoggedIn={isLoggedIn} logout={logout} login={login} />
       <Routes>
         <Route exact path='/' element={<Home />} />
         <Route path='/register' element={!isLoggedIn ? <Register login={login} /> : <Navigate to='/' />} />
-        <Route path='/profile' element={<Profile />} />
         <Route path='/recipes' element={<Recipes />} />
+        <Route path='/profile' element={isLoggedIn ? <Profile /> : <Navigate to='/' />} />
+        <Route path='/pantry' element={isLoggedIn ? <Pantry pantry={user.pantry} /> : <Navigate to='/' />} />
+        <Route path='/yourrecipes' element={isLoggedIn ? <YourRecipes /> : <Navigate to='/' />} />
+        <Route path='/editprofile' element={isLoggedIn ? <EditProfile /> : <Navigate to='/' />} />
       </Routes>
     </Router>
 

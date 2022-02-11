@@ -1,20 +1,36 @@
 import { NavLink } from 'react-router-dom'
 import { useState } from 'react'
+import axios from 'axios'
+import { URL } from '../config'
+
 
 
 export default function NavBar(props) {
 
     const [isOpen, setIsOpen] = useState(false)
+    const [message, setMessage] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
+    const handleLogin = async (e) => {
+        e.preventDefault()
+        try {
+            const res = await axios.post(`${URL}/user/login`, { email, password })
+            console.log(res)
+            setMessage(res.data.message)
+            setTimeout(() => {
+                res.data.ok && props.login(res.data.token)
 
+            }, 2000)
 
-    const styles = {
-        active: {
-            color: 'pink'
-        },
-        default: {
-            color: 'white'
+        } catch (err) {
+            console.error(err)
         }
+    }
+    const handleLogout = (e) => {
+        e.preventDefault() 
+        props.logout()
+        setMessage('')
     }
 
     return <header>
@@ -43,25 +59,39 @@ export default function NavBar(props) {
         </div>
 
         <div className='menu-wrapper'>
-            <img
+            <img alt="chef's hat icon"
                 className='profileicon'
-                src={props.isLoggedIn ? 'icons8-chef-hat-gradient.png' :'icons8-chef-hat-4.png'}
+                src={props.isLoggedIn ? 'icons8-chef-hat-gradient.png' : 'icons8-chef-hat-4.png'}
                 onMouseEnter={() => setIsOpen(!isOpen)} />
 
             <nav>
                 {isOpen &&
-                    <form
-                        className='loginmenu'
-                        onMouseLeave={() => setIsOpen(false)}>
+                    (!props.isLoggedIn ?
+                        <form
+                            className='loginmenu'
+                            onMouseLeave={() => setIsOpen(false)}
+                            onSubmit={handleLogin}>
 
-                        <label>Email</label>
-                        <input type='email' />
-                        <label>Password</label>
-                        <input type='password' />
-                        <button
-                            style={{ margin: '5px 0px' }}>Submit</button>
-                        <NavLink to='/register' id='registerlink'>Register</NavLink>
-                    </form>}
+                            <label>Email</label>
+                            <input type='email' onChange={(e) => setEmail(e.target.value)}/>
+                            <label>Password</label>
+                            <input type='password' onChange={(e) => setPassword(e.target.value)}/>
+                            <button
+                                style={{ margin: '5px 0px' }}>Submit</button>
+                                <p>{message}</p>
+                            <NavLink to='/register' id='registerlink'>Register</NavLink>
+                        </form> :
+                        <form
+                            onSubmit={handleLogout}
+                            className='isloggedinmenu'
+                            onMouseLeave={() => setIsOpen(false)}>
+                            <NavLink to='/profile' style={{ textDecoration: 'none', color: '#4d74c7', padding: '5px 0px' }}>Profile</NavLink>
+                            <NavLink to='/pantry' style={{ textDecoration: 'none', color: '#4d74c7', padding: '5px 0px' }}>Pantry</NavLink>
+                            <NavLink to='/yourrecipes' style={{ textDecoration: 'none', color: '#4d74c7', padding: '5px 0px' }}>Your Recipes</NavLink>
+                            <NavLink to='/editprofile' style={{ textDecoration: 'none', color: '#4d74c7', padding: '5px 0px' }}>Edit Profile</NavLink>
+                            <button>Logout</button>
+                        </form>)}
+
                 {/* <div id='navigationlinks'>
                     <NavLink exact style={({isActive}) => (isActive? styles.active :styles.default)} to='/register'>Register</NavLink>
                     <NavLink exact style={({isActive}) => (isActive? styles.active : styles.default)} to='/profile'>Profile</NavLink>

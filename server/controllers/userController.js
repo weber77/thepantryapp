@@ -53,7 +53,7 @@ const login = async (req, res) => {
     const match = await argon2.verify(user.password, password);
     if (match) {
       const token = jwt.sign(user.toJSON(), jwt_secret, { expiresIn: "1h" }); //{expiresIn:'365d'}
-      res.json({ ok: true, message: "welcome back", token, email });
+      res.json({ ok: true, message: "welcome back!", token, email });
     } else return res.json({ ok: false, message: "invalid data provided" });
   } catch (err) {
     res.json({ ok: false, err });
@@ -70,4 +70,15 @@ const verify_token = (req, res) => {
   });
 };
 
-module.exports = { register, login, verify_token };
+const insert = (req, res) => {
+  const {newItem} = req.body
+  try {
+    const user = User.pantry;
+    
+
+  } catch (err) {
+    res.json({ok: false, err});
+  }
+}
+
+module.exports = { register, login, verify_token, insert };
