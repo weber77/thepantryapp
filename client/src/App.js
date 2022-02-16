@@ -5,30 +5,33 @@ import Home from './views/Home.js'
 import Register from './views/Register.js'
 import Profile from './views/Profile.js'
 import Recipes from './views/Recipes.js'
-import NavBar from './components/NavBar.js'
 import YourRecipes from './views/YourRecipes.js'
 import EditProfile from './views/EditProfile.js'
 import Pantry from './views/Pantry.js'
+import NavBar from './components/NavBar.js'
 
 import { URL } from './config'
 
 export default function App() {
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [user, setUser] = useState(null)
+  const [user, setUser] = useState({
+    pantry: []
+  })
   let token;
 
   useEffect(
     () => {
       const verify_token = async () => {
         try {
+          token = localStorage.getItem('token')
           if (!token) {
-            token = JSON.parse(localStorage.getItem('token'))
-            logout()
+            return logout()
           }
           axios.defaults.headers.common['Authorization'] = token;
           const response = await axios.post(`${URL}/user/verify_token`);
-          return response.data.ok ? (login(token), setUser(response.data.succ) ) : logout();
+          console.log('verify: ', response.data.user)
+          return response.data.ok ? (login(token), setUser(response.data.user)) : logout();
         } catch (err) {
           console.log(err);
         }
@@ -39,14 +42,28 @@ export default function App() {
   );
 
   const login = (token) => {
-    localStorage.setItem('token', JSON.stringify(token));
+    localStorage.setItem('token', token);
     setIsLoggedIn(true);
+    //send user data so on login user information is available
+    
   };
 
   const logout = () => {
     localStorage.removeItem('token');
     setIsLoggedIn(false);
   };
+
+  const updateUser = async (key, value) => {
+    try {
+      const copy = { ...user }
+      copy[key] = value
+      const res = await axios.post(`${URL}/user/update`, { copy })
+      setUser(res.data.user)
+      console.log('update: ', res.data.user.pantry);
+    } catch (err) {
+      console.error(err)
+    }
+  }
 
   return <div>
 
@@ -57,8 +74,8 @@ export default function App() {
         <Route path='/register' element={!isLoggedIn ? <Register login={login} /> : <Navigate to='/' />} />
         <Route path='/recipes' element={<Recipes />} />
         <Route path='/profile' element={isLoggedIn ? <Profile /> : <Navigate to='/' />} />
-        <Route path='/pantry' element={isLoggedIn ? <Pantry pantry={user.pantry} /> : <Navigate to='/' />} />
-        <Route path='/yourrecipes' element={isLoggedIn ? <YourRecipes /> : <Navigate to='/' />} />
+        <Route path='/pantry' element={isLoggedIn ? <Pantry pantry={user.pantry} updateUser={updateUser} /> : <Navigate to='/' />} />
+        <Route path='/yourrecipes' element={isLoggedIn ? <YourRecipes user={user} isLoggedIn={isLoggedIn} updateUser={updateUser} /> : <Navigate to='/' />} />
         <Route path='/editprofile' element={isLoggedIn ? <EditProfile /> : <Navigate to='/' />} />
       </Routes>
     </Router>

@@ -19,10 +19,8 @@ export default function NavBar(props) {
             console.log(res)
             setMessage(res.data.message)
             setTimeout(() => {
-                res.data.ok && props.login(res.data.token)
-
+                res.data.ok && props.login(res.data.token, res.data.user)
             }, 2000)
-
         } catch (err) {
             console.error(err)
         }
@@ -91,12 +89,6 @@ export default function NavBar(props) {
                             <NavLink to='/editprofile' style={{ textDecoration: 'none', color: '#4d74c7', padding: '5px 0px' }}>Edit Profile</NavLink>
                             <button>Logout</button>
                         </form>)}
-
-                {/* <div id='navigationlinks'>
-                    <NavLink exact style={({isActive}) => (isActive? styles.active :styles.default)} to='/register'>Register</NavLink>
-                    <NavLink exact style={({isActive}) => (isActive? styles.active : styles.default)} to='/profile'>Profile</NavLink>
-                    <NavLink exact style={({isActive}) => (isActive ? styles.active : styles.default)} to='/recipes'>Recipes</NavLink>
-                </div> */}
             </nav>
         </div>
     </header>

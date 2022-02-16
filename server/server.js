@@ -6,7 +6,7 @@ app.use(require('cors')());
 
 (async function () {
     try {
-        await require('mongoose').connect("mongodb://127.0.0.1/thePantryApp", {
+        await require('mongoose').connect('mongodb+srv://purpleinkpen:purpleinkpen@cluster0.ixwji.mongodb.net/thePantryApp?retryWrites=true&w=majority', {
             useUnifiedTopology: true,
             useNewUrlParser: true,
         });

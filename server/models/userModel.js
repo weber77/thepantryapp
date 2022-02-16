@@ -10,7 +10,6 @@ const userSchema = new mongoose.Schema({
         { type: String }
     ],
     favouriteRecipes: [
-        { type: String }
     ],
     madeRecipes: [
         { type: String }

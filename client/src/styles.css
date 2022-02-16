@@ -112,6 +112,9 @@ footer {
     color: white;
     text-align: center;
     padding: 5px 0px;
+    bottom: 0;
+    position: fixed;
+    width: 100vw;
 }
 
 .registrationpage {
@@ -168,4 +171,59 @@ footer {
 
 .mainpantrydiv {
     min-height: calc(100vh - 50px);
+}
+
+li {
+    list-style-type: none;
+}
+
+.mainpantrydiv h1 {
+    text-align: center;
+}
+
+.mainpantrydiv form {
+    text-align: center;
+}
+
+.mainpantrydiv ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.mainpantrydiv img {
+    max-height: 0.7em;
+}
+
+.mainpantrydiv button {
+    margin: 2px 5px;
+}
+
+.yourrecipesmaindiv {
+    text-align: center;
+}
+
+.yourrecipesmaindiv img {
+    max-height: 1em;
+}
+
+.yourrecipesmaindiv ul {
+    display: flex;
+    max-width: 80vw;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.editprofileform {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    /* grid-template-columns:1fr 1fr 1fr; */
+
+}
+
+.editprofileform button {
+    margin: 0px 5px;
+}
+
+.epinlinedivs {
+    display: inline;
 }

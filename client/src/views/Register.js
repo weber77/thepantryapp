@@ -17,8 +17,7 @@ export default function Register(props) {
             console.log(res)
             setMessage(res.data.message)
             setTimeout(() => {
-                res.data.ok && props.login(res.data.token)
-
+                res.data.ok && props.login(res.data.token, res.data.user)
             }, 2000)
         } catch (err) {
             console.error(err)
