@@ -15,5 +15,6 @@ const userSchema = new mongoose.Schema({
         { type: String }
     ]
 });
+ //separate pantry, favourtieRecipes, & madeRecipes into separate schema 
 
 module.exports = mongoose.model("user", userSchema);

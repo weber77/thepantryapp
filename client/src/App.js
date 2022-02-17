@@ -18,34 +18,35 @@ export default function App() {
   const [user, setUser] = useState({
     pantry: []
   })
-  let token;
+  let token = localStorage.getItem('token');
 
   useEffect(
     () => {
       const verify_token = async () => {
         try {
-          token = localStorage.getItem('token')
+          // token = localStorage.getItem('token')
           if (!token) {
             return logout()
           }
           axios.defaults.headers.common['Authorization'] = token;
           const response = await axios.post(`${URL}/user/verify_token`);
           console.log('verify: ', response.data.user)
-          return response.data.ok ? (login(token), setUser(response.data.user)) : logout();
+          
+          return response.data.ok ? (login(token, response.data.user), setUser(response.data.user)) : logout();
         } catch (err) {
           console.log(err);
         }
       };
       verify_token();
     },
-    [token]
+    []
   );
 
-  const login = (token) => {
+  const login = (token,userData) => {
     localStorage.setItem('token', token);
     setIsLoggedIn(true);
     //send user data so on login user information is available
-    
+    setUser(userData)
   };
 
   const logout = () => {
@@ -54,6 +55,7 @@ export default function App() {
   };
 
   const updateUser = async (key, value) => {
+    debugger
     try {
       const copy = { ...user }
       copy[key] = value
@@ -73,10 +75,10 @@ export default function App() {
         <Route exact path='/' element={<Home />} />
         <Route path='/register' element={!isLoggedIn ? <Register login={login} /> : <Navigate to='/' />} />
         <Route path='/recipes' element={<Recipes />} />
-        <Route path='/profile' element={isLoggedIn ? <Profile /> : <Navigate to='/' />} />
+        <Route path='/profile' element={isLoggedIn ? <Profile user={user}/> : <Navigate to='/' />} />
         <Route path='/pantry' element={isLoggedIn ? <Pantry pantry={user.pantry} updateUser={updateUser} /> : <Navigate to='/' />} />
         <Route path='/yourrecipes' element={isLoggedIn ? <YourRecipes user={user} isLoggedIn={isLoggedIn} updateUser={updateUser} /> : <Navigate to='/' />} />
-        <Route path='/editprofile' element={isLoggedIn ? <EditProfile /> : <Navigate to='/' />} />
+        <Route path='/editprofile' element={isLoggedIn ? <EditProfile updateUser={updateUser} isLoggedIn={isLoggedIn} user={user}/> : <Navigate to='/' />} />
       </Routes>
     </Router>
 

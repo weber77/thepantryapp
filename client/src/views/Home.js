@@ -15,7 +15,7 @@ export default function Home() {
                     pathname: '/recipes',
                     search: searchTerm
                 }}>
-                    <button type='submit' style={{margin:'0px 5px'}}>Search</button>
+                    <button type='submit' style={{ margin: '0px 5px' }}>Search</button>
                 </Link>
             </form>
 

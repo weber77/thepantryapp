@@ -37,7 +37,7 @@ export default function NavBar(props) {
             to='/'
         >
             <img src='/logo.jpeg'
-                alt='colorful logo with letters p and a'
+                alt='black and white logo with letters p and a'
                 className='logo' />
         </NavLink>
         <div style={{ display: "flex", flexDirection: 'column' }}>
@@ -60,7 +60,7 @@ export default function NavBar(props) {
             <img alt="chef's hat icon"
                 className='profileicon'
                 src={props.isLoggedIn ? 'icons8-chef-hat-gradient.png' : 'icons8-chef-hat-4.png'}
-                onMouseEnter={() => setIsOpen(!isOpen)} />
+                onClick={() => setIsOpen(!isOpen)} />
 
             <nav>
                 {isOpen &&

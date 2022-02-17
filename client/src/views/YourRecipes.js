@@ -56,7 +56,8 @@ export default function YourRecipes(props) {
             })}
         </ul>
         <div className="reciperesults">
-            {recipes.map((recipe) => <Recipe user={props.user} updateUser={props.updateUser} recipe={recipe} isLoggedIn={props.isLoggedIn} />)}
+            {recipes.map((recipe) => <Recipe user={props.user} updateUser={props.updateUser} 
+            recipe={recipe} isLoggedIn={props.isLoggedIn} />)}
         </div>
     </div>
 }
