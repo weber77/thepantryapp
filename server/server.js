@@ -1,7 +1,8 @@
-const app = require('express')();
+const express = require('express')
+const app = express();
 const port = 4040;
-app.use(require('express').urlencoded({ extended: true }));
-app.use(require('express').json());
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(require('cors')());
 
 (async function () {
@@ -18,6 +19,7 @@ app.use(require('cors')());
 
 app.use('/user', require("./routes/userRoutes"));
 
+const path = require('path')
 app.use(express.static(__dirname));
 app.use(express.static(path.join(__dirname, '../client/build')));
 
