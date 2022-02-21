@@ -73,7 +73,7 @@ export default function App() {
       <Routes>
         <Route exact path='/' element={<Home />} />
         <Route path='/register' element={!isLoggedIn ? <Register login={login} /> : <Navigate to='/' />} />
-        <Route path='/recipes' element={<Recipes />} />
+        <Route path='/recipes' element={isLoggedIn ? <Navigate to='/yourrecipes' /> : <Recipes />} />
         <Route path='/profile' element={isLoggedIn ? <Profile user={user}/> : <Navigate to='/' />} />
         <Route path='/pantry' element={isLoggedIn ? <Pantry pantry={user?.pantry} updateUser={updateUser} /> : <Navigate to='/' />} />
         <Route path='/yourrecipes' element={isLoggedIn ? <YourRecipes user={user} isLoggedIn={isLoggedIn} updateUser={updateUser} /> : <Navigate to='/' />} />

@@ -6,7 +6,9 @@ const userSchema = new mongoose.Schema({
     dateCreated: { type: Date, default: Date.now() },
     password: { type: String, required: true },
     name: { type: String },
-    pantry: { type: Array },
+    pantry: [
+        
+    ],
     favouriteRecipes: [
     ],
     madeRecipes: [

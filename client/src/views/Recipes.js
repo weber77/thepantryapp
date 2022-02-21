@@ -43,7 +43,7 @@ export default function Recipes(props) {
 
 
     return (
-        <div>
+        <div className='mainrecipessearchdiv'>
             <form onSubmit={callToAPI} className='recipesform'>
                 <h1>Recipes</h1>
                 <input

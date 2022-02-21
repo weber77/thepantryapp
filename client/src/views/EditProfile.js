@@ -70,7 +70,7 @@ export default function EditProfile(props) {
         },
       };
 
-    return <div>
+    return <div className='maineditprofilediv'>
         <section className="editprofileform">
 
             <br />

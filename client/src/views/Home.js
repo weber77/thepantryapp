@@ -10,7 +10,10 @@ export default function Home() {
         <div>
 
             <form >
-                <input placeholder="let's find something tasty" onChange={(e) => setSearchTerm(e.target.value)} />
+                <input placeholder="let's find something tasty" 
+                onChange={(e) => setSearchTerm(e.target.value)}
+                style={{width:'150px'}}
+                 />
                 <Link to={{
                     pathname: '/recipes',
                     search: searchTerm
