@@ -1,9 +1,9 @@
 import React from 'react';
 
 export default function Recipe(props) {
-    // console.log('recipe: ', recipe.recipe)
 
-    const handleFav = () => {
+
+    const addFav = () => {
         console.log(props)
         try {
             const copy = [...props.user.favouriteRecipes]
@@ -12,6 +12,19 @@ export default function Recipe(props) {
         }
         catch (err) {
             console.error(err)
+        }
+    }
+
+    const removeFav = () => {
+
+        try {
+            const idx = props.user.favouriteRecipes.findIndex(r => r.recipe.url === props.recipe.recipe.url)
+            const copy = [...props.user.favouriteRecipes]
+            copy.splice(idx, 1)
+            props.updateUser('favouriteRecipes', copy)
+        }
+        catch (err) {
+            console.error(err);
         }
     }
 
@@ -34,11 +47,24 @@ export default function Recipe(props) {
                 target='blank'>
                 <h3>{props.recipe.recipe.label}</h3>
             </a>
-            {/* {props.isLoggedIn && <button onClick={handleFav}>
-                <img src={props.user.favouriteRecipes.includes(props.recipe.recipe)
+
+
+            {props.isLoggedIn &&
+                (props.user.favouriteRecipes.some((r) => r.recipe.url === props.recipe.recipe.url)
+                    ? <button onClick={removeFav}>
+                        <img src='yellowstar.png' alt='yellow star'/>
+                    </button>
+                    : <button onClick={addFav}>
+                        <img src='icons8-star-50.png' alt='black outline of a star'/>
+                    </button>
+                )
+            }
+            {/* {props.isLoggedIn && (<button onClick={addFav}>
+                <img src={props.user.favouriteRecipes.some((r) => r.recipe.label === props.recipe.recipe.label)
                     ? 'yellowstar.png'
-                    : "https://img.icons8.com/external-dreamstale-lineal-dreamstale/32/000000/external-favourite-music-dreamstale-lineal-dreamstale.png"} />
-            </button>} */}
+                    : 'icons8-star-50.png'} /></button>)
+            } */}
+
 
         </div>
     )

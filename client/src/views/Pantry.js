@@ -43,10 +43,10 @@ console.log('props',props)
             <input placeholder="type food here" onChange={(e) => setNewItem(e.target.value)} value={newItem} />
             <button>Add me!</button>
         </form>
-        {props.pantry.length === 0
+        {props.pantry?.length === 0
             ? <h2>Oops, looks like your pantry is empty! Let's add some things to get started</h2>
             : <ul>
-                {props.pantry.map((item, i) => {
+                {props.pantry?.map((item, i) => {
                     return <li key={item}>
                         {item}
                         <button onClick={() => handleClick(i)}>

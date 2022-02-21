@@ -1,8 +1,10 @@
 import axios from 'axios'
 import { useState } from 'react'
+import Modal from 'react-modal'
+
 import { URL } from '../config'
 
-
+Modal.setAppElement('#root')
 export default function EditProfile(props) {
     //first receive user obj through props
     //to update user obj in app.js need to update setter 
@@ -12,7 +14,8 @@ export default function EditProfile(props) {
     //inside same funct use 
     //delete account - confirmation modal external library - send response to client logout client and delete token and send to homepage 
     //update pw - follow steps for authentication again. Ask for current pw, newpw, send to back end, verify first pw through hashing and if match, update with new hashed pw following steps for signing up 
-
+    
+    const [modalIsOpen, setIsOpen] = useState(false);
     const [message, setMessage] = useState('')
     const [form, setForm] = useState ({
         username: '',
@@ -21,11 +24,15 @@ export default function EditProfile(props) {
         new_pw2: ''
     })
 
-    // const deleteHandler = (i, e) => {
-    //     e.preventDefault()
-    // props.isLoggedIn(false)
-    //     props.updateUser(props.onDelete)
-    // }
+    const deleteHandler = async () => {
+        try {
+            const res = await axios.post(`${URL}/user/delete`, {id: props.user._id})
+            props.logout();
+        } 
+        catch (err) {
+            console.error(err)
+        }
+    }
     const handleChange = e => {
         setForm({...form, [e.target.name]: e.target.value} )
     }
@@ -52,6 +59,17 @@ export default function EditProfile(props) {
         }
     }
 
+    const customStyles = {
+        content: {
+          top: '50%',
+          left: '50%',
+          right: 'auto',
+          bottom: 'auto',
+          marginRight: '-50%',
+          transform: 'translate(-50%, -50%)',
+        },
+      };
+
     return <div>
         <section className="editprofileform">
 
@@ -77,12 +95,22 @@ export default function EditProfile(props) {
             </div>
 
             <button style={{ maxWidth: 'fit-content' }}
-            // onClick={(e) => {window.confirm('Are you sure you wish to proceed? This action will permanently delete your account.') ? onCancel(e) : deleteHandler(e)}}
+            onClick={() => setIsOpen(true)}
             >
                 Delete account
             </button>
 
         </section>
+        <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={() => setIsOpen(false)}
+        style={customStyles}
+        contentLabel="Modal for delete account confirmation"
+      >
+          <h1>Are you sure you wish to proceed? This action will premanently delete your account.</h1>
+          <button onClick={() => setIsOpen(false)}>Cancel </button>
+          <button onClick={deleteHandler}>OK</button>
+      </Modal>
 
     </div>
 }

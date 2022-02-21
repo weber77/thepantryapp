@@ -12,4 +12,6 @@ router.post('/verify_token', controller.verify_token);
 
 router.post('/updatepw', controller.updatePassword);
 
+router.post('/delete', controller.deleteUser);
+
 module.exports = router;

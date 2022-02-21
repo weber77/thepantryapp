@@ -55,7 +55,6 @@ export default function App() {
   };
 
   const updateUser = async (key, value) => {
-    debugger
     try {
       const copy = { ...user }
       copy[key] = value
@@ -76,9 +75,9 @@ export default function App() {
         <Route path='/register' element={!isLoggedIn ? <Register login={login} /> : <Navigate to='/' />} />
         <Route path='/recipes' element={<Recipes />} />
         <Route path='/profile' element={isLoggedIn ? <Profile user={user}/> : <Navigate to='/' />} />
-        <Route path='/pantry' element={isLoggedIn ? <Pantry pantry={user.pantry} updateUser={updateUser} /> : <Navigate to='/' />} />
+        <Route path='/pantry' element={isLoggedIn ? <Pantry pantry={user?.pantry} updateUser={updateUser} /> : <Navigate to='/' />} />
         <Route path='/yourrecipes' element={isLoggedIn ? <YourRecipes user={user} isLoggedIn={isLoggedIn} updateUser={updateUser} /> : <Navigate to='/' />} />
-        <Route path='/editprofile' element={isLoggedIn ? <EditProfile updateUser={updateUser} isLoggedIn={isLoggedIn} user={user}/> : <Navigate to='/' />} />
+        <Route path='/editprofile' element={isLoggedIn ? <EditProfile updateUser={updateUser} isLoggedIn={isLoggedIn} user={user} logout={logout}/> : <Navigate to='/' />} />
       </Routes>
     </Router>
 

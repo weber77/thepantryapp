@@ -121,4 +121,18 @@ const updatePassword = async (req, res) => {
     res.json({ ok: false, err })
   }
 }
-module.exports = { register, login, verify_token, updateUser, updatePassword };
+
+const deleteUser = async (req, res) => {
+ const { id } = req.body
+ console.log(id)
+  try {
+    const deleted = await User.findByIdAndDelete(id)
+    return res.send({ok: true, message: 'Account deleted succesfully'})
+    
+  } 
+  catch (err) {
+    console.error(err);
+    res.json({ ok: false, err })
+  }
+}
+module.exports = { register, login, verify_token, updateUser, updatePassword, deleteUser };

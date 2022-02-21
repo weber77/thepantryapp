@@ -6,15 +6,13 @@ const userSchema = new mongoose.Schema({
     dateCreated: { type: Date, default: Date.now() },
     password: { type: String, required: true },
     name: { type: String },
-    pantry: [
-        { type: String }
-    ],
+    pantry: { type: Array },
     favouriteRecipes: [
     ],
     madeRecipes: [
         { type: String }
     ]
 });
- //separate pantry, favourtieRecipes, & madeRecipes into separate schema 
+ //separate pantry, favouriteRecipes, & madeRecipes into separate schema 
 
 module.exports = mongoose.model("user", userSchema);

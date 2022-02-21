@@ -1,31 +1,26 @@
+import axios from "axios"
+import { useEffect, useState } from "react"
+import URL from '../config'
+import Recipe from '../components/Recipe'
 
 
-export default function Home(props) {
+export default function Profile(props) {
+    console.log('props: ', props.user.favouriteRecipes[props.user.favouriteRecipes.length - 1].recipe.images.REGULAR.url)
 
-    return <div>
-        <div>
-            <img alt=''/>
-            <span>favs links</span>
-            <section>
-                <span>
-                    <h2>make it now - you've got everything you need!</h2>
-                    <ul>recipe links</ul>
-                </span>
-                <span>
-                    <h2>just a few missing flavors</h2>
-                    <ul>recipe links</ul>
-                </span>
-                <span>
-                    <h2>let's expand our palates. Time for a shop!</h2>
-                    <ul>recipe links</ul>
-                </span>
-            </section>
-        </div>
+    return <div className="mainprofilediv">
+        <h1>Welcome back, Chef!</h1>
 
-        <div>
-            <span>pantry</span>
-            <span>made</span>
-
+        <div className="lrprofilediv">
+            <div className="profileleft">
+                <img src={props.user.favouriteRecipes[props.user.favouriteRecipes.length - 1].recipe.images.LARGE?.url || props.user.favouriteRecipes[props.user.favouriteRecipes.length - 1].recipe.images?.REGULAR.url} alt='image from last saved favourite recipe' />
+            </div>
+            
+            <div className="profileright">
+                <span>Favourite Recipes</span>
+                <ul>
+                    {props.user.favouriteRecipes.map((item, i) => item[i])}
+                </ul>
+            </div>
         </div>
 
     </div>
