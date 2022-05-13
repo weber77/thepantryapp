@@ -18,7 +18,7 @@ export default function Recipes(props) {
 
     const callToAPI = async (e, locSearch) => {//receives keywords 
         e && e.preventDefault();
-        const url = `https://cors-anywhere.herokuapp.com/https://api.edamam.com/api/recipes/v2?type=public&beta=true&q=${locSearch
+        const url = `https://api.edamam.com/api/recipes/v2?type=public&beta=true&q=${locSearch
             ? locationSearch
             : searchTerm}&app_id=${process.env.REACT_APP_EDAMAM_APP_ID}&app_key=${process.env.REACT_APP_EDAMAM_APP_KEY}`
         const res = await axios.get(url)

@@ -14,10 +14,10 @@ export default function EditProfile(props) {
     //inside same funct use 
     //delete account - confirmation modal external library - send response to client logout client and delete token and send to homepage 
     //update pw - follow steps for authentication again. Ask for current pw, newpw, send to back end, verify first pw through hashing and if match, update with new hashed pw following steps for signing up 
-    
+
     const [modalIsOpen, setIsOpen] = useState(false);
     const [message, setMessage] = useState('')
-    const [form, setForm] = useState ({
+    const [form, setForm] = useState({
         username: '',
         old_pw: '',
         new_pw: '',
@@ -26,15 +26,15 @@ export default function EditProfile(props) {
 
     const deleteHandler = async () => {
         try {
-            const res = await axios.post(`${URL}/user/delete`, {id: props.user._id})
+            const res = await axios.post(`${URL}/user/delete`, { id: props.user._id })
             props.logout();
-        } 
+        }
         catch (err) {
             console.error(err)
         }
     }
     const handleChange = e => {
-        setForm({...form, [e.target.name]: e.target.value} )
+        setForm({ ...form, [e.target.name]: e.target.value })
     }
 
     const handleUsernameChange = () => {
@@ -52,8 +52,8 @@ export default function EditProfile(props) {
                 email: props.user.email
             })
             console.log(res)
-        
-        } 
+
+        }
         catch (err) {
             console.error(err)
         }
@@ -61,56 +61,56 @@ export default function EditProfile(props) {
 
     const customStyles = {
         content: {
-          top: '50%',
-          left: '50%',
-          right: 'auto',
-          bottom: 'auto',
-          marginRight: '-50%',
-          transform: 'translate(-50%, -50%)',
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
         },
-      };
+    };
 
     return <div className='maineditprofilediv'>
-        <section className="editprofileform">
+        <div className='epbackgroundimg'>
+        </div>
 
-            <br />
-            <div className="epinlinedivs">
-                <p>Current username: {props.user.username}</p>
-                <label>New username: </label>
-                <input name='username' placeholder="type new username here" onChange={handleChange} />
-                <button onClick={handleUsernameChange}>
-                    Update username
-                </button>
+        <form className="editprofileform">
+            <img alt='black user icon'
+                className='epuser-icon'
+                src='userblk.png' />
+            <p>Current username: {props.user.username}</p>
+            <div className='epinfosplit'>
+                <div className='epusernamediv'>
+                    <label className='eplabel'>New username </label>
+                    <input className='epinput' name='username' placeholder="type new username here" onChange={handleChange} />
+                    <button className='epinfoBtns' onClick={handleUsernameChange}>
+                        Update username
+                    </button>
+                </div>
+                <div className='eppwdiv'>
+                    <label className='eplabel'>Password </label>
+                    <input className='epinput' name='old_pw' type='password' placeholder='type old password' onChange={handleChange} />
+                    <input className='epinput' name='new_pw' type='password' placeholder="type new password" onChange={handleChange} />
+                    <input className='epinput' name='new_pw2' type='password' placeholder='confirm new password' onChange={handleChange} />
+                    <button className='epinfoBtns' onClick={handlePwChange}>
+                        Update password
+                    </button>
+                </div>
             </div>
-
-            <br />
-            <div>
-                <label>Password: </label>
-                <input name='old_pw' type='password' placeholder='type old password' onChange={handleChange} />
-                <input name='new_pw' type='password' placeholder="type new password" onChange={handleChange} />
-                <input name='new_pw2' type='password' placeholder='confirm new password' onChange={handleChange} />
-                <button onClick={handlePwChange}>
-                    Update Password
+                <button className='deleteBtn' onClick={() => setIsOpen(true)}>
+                    Delete account
                 </button>
-            </div>
-
-            <button style={{ maxWidth: 'fit-content' }}
-            onClick={() => setIsOpen(true)}
-            >
-                Delete account
-            </button>
-
-        </section>
+        </form>
         <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={() => setIsOpen(false)}
-        style={customStyles}
-        contentLabel="Modal for delete account confirmation"
-      >
-          <h1>Are you sure you wish to proceed? This action will premanently delete your account.</h1>
-          <button onClick={() => setIsOpen(false)}>Cancel </button>
-          <button onClick={deleteHandler}>OK</button>
-      </Modal>
+            isOpen={modalIsOpen}
+            onRequestClose={() => setIsOpen(false)}
+            style={customStyles}
+            contentLabel="Modal for delete account confirmation"
+        >
+            <h1>Are you sure you wish to proceed? This action will premanently delete your account.</h1>
+            <button onClick={() => setIsOpen(false)}>Cancel </button>
+            <button onClick={deleteHandler}>OK</button>
+        </Modal>
 
     </div>
 }

@@ -41,7 +41,7 @@ console.log('props',props)
         <h1>Pantry</h1>
         <form onSubmit={handleSubmit}>
             <input placeholder="type food here" onChange={(e) => setNewItem(e.target.value)} value={newItem} />
-            <button>Add me!</button>
+            <button className='addBtn'>Add me!</button>
         </form>
         {props.pantry?.length === 0
             ? <h2>Oops, looks like your pantry is empty! Let's add some things to get started</h2>

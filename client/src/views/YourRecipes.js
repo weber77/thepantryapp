@@ -8,8 +8,8 @@ export default function YourRecipes(props) {
 
     const [recipes, setRecipes] = useState([])
     const [ingredients, setIngredients] = useState([])
-    const [getCooking, setGetCooking] = useState([])
-    const [letsShop, setLetsShop] = useState([])
+    // const [getCooking, setGetCooking] = useState([])
+    // const [letsShop, setLetsShop] = useState([])
 
     //put user to state 
     //in useEffect keep track of state with pantry
@@ -36,25 +36,25 @@ export default function YourRecipes(props) {
         callToAPI();
     }, [])
 
+    // useEffect(() => {
+    //     if (recipes.length > 0 && ingredients.length > 0) {
+    //         let tempGetCooking = [], tempLetsShop = []
+    //         recipes.forEach((recipe, i) => {
+    //             if (props.user.pantry.length === recipe.recipe.ingredients.length) {
+    //                 tempGetCooking.push(recipe[i])
+    //             } else {
+    //                 tempLetsShop.push(recipe[i])
+    //             }
+    //         })
+    //         setGetCooking(tempGetCooking)
+    //         setLetsShop(tempLetsShop)
+    //     }
+
+
+    // }, [recipes, ingredients])
+
     useEffect(() => {
-        if (recipes.length > 0 && ingredients.length > 0) {
-            let tempGetCooking = [], tempLetsShop = []
-            recipes.forEach((recipe, i) => {
-                if (props.user.pantry.length === recipe.recipe.ingredients.length) {
-                    tempGetCooking.push(recipe[i])
-                } else {
-                    tempLetsShop.push(recipe[i])
-                }
-            })
-            setGetCooking(tempGetCooking)
-            setLetsShop(tempLetsShop)
-        }
-
-
-    }, [recipes, ingredients])
-
-    useEffect(() => {
-        const ingredientsMap = props.user?.pantry.map((ing, i) => ({ check: true, name: ing }))
+        const ingredientsMap = props.user?.pantry.map((ing, i) => ({ check: false, name: ing }))
         setIngredients(ingredientsMap);
     }, [props])
 
@@ -72,6 +72,7 @@ export default function YourRecipes(props) {
                 return <li key={i}>
                     {item.name}
                     <input type='checkbox' checked={item.check} onChange={() => handleChange(i)} />
+                    
                 </li>
 
             })}

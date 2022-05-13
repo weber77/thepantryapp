@@ -28,6 +28,14 @@
   color: #61dafb;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans&family=Lobster&display=swap');
+
+@font-face {
+  font-family: 'Alumni Sans', sans-serif;
+  font-family: 'Lobster', cursive;
+  src: url('https://fonts.googleapis.com/css2?family=Alumni+Sans&family=Lobster&display=swap');
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

@@ -29,32 +29,31 @@ export default function Recipe(props) {
     }
 
     return (
-        <div style={{ maxWidth: '30vw' }}>
+        <div style={{ maxWidth: '30vw', textAlign: 'center', wordWrap:'break-word', padding:'15px' }}>
             <img style={{ borderRadius: '10%', maxHeight: '200px' }}
                 src={props.recipe.recipe.images.SMALL
                     ? props.recipe.recipe.images.SMALL.url
                     : props.recipe.recipe.image}
-                alt='images of food that correspond to each recipe'
+                alt='food that corresponds to each recipe'
             />
 
             <a
                 style={{
                     textDecoration: 'none',
                     color: 'black',
-                    textAlign: 'center'
                 }}
                 href={props.recipe.recipe.url}
                 target='blank'>
-                <h3>{props.recipe.recipe.label}</h3>
+                <h3 style={{fontSize: '20px', fontWeight:'lighter', textDecoration:'unerline', display:'flex', flexWrap:'wrap', maxWidth: '15vw', justifyContent:'center', alignItems:'center'}}>{props.recipe.recipe.label}</h3>
             </a>
 
 
             {props.isLoggedIn &&
                 (props.user.favouriteRecipes.some((r) => r.recipe.url === props.recipe.recipe.url)
-                    ? <button onClick={removeFav}>
+                    ? <button onClick={removeFav} className='favouritebtn'>
                         <img src='yellowstar.png' alt='yellow star'/>
                     </button>
-                    : <button onClick={addFav}>
+                    : <button onClick={addFav} className='favouritebtn'>
                         <img src='icons8-star-50.png' alt='black outline of a star'/>
                     </button>
                 )

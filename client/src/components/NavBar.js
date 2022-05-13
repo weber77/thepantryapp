@@ -59,7 +59,7 @@ export default function NavBar(props) {
         <div className='menu-wrapper'>
             <img alt="chef's hat icon"
                 className='profileicon'
-                src={props.isLoggedIn ? 'icons8-chef-hat-gradient.png' : 'icons8-chef-hat-4.png'}
+                src={props.isLoggedIn ? 'li-user2.png' : 'lo-user.png'}
                 onClick={() => setIsOpen(!isOpen)} />
 
             <nav>

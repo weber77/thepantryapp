@@ -26,30 +26,29 @@ export default function Register(props) {
 
 
     return <div className='registrationpage'>
-        <div className='signup'>YOU'RE SO CLOSE!
-            <p>JUST ONE MORE CLICK </p>
-            <p>AND YOU'LL NEVER BE LEFT</p>
-            <p>STANDING IN FRONT OF THE FRIDGE</p>
-            <p>WONDERING WHAT TO EAT</p>
-            <p>AGAIN</p>
-        </div>
-        <form className='registerform' onSubmit={(e) => handleSubmit(e)}>
-            <h1>Registration Form</h1>
-            <label>Email</label>
-            <input name='email' onChange={(e) => setEmail(e.target.value)} />
-            <br />
-
-            <label>Password</label>
-            <input type='password' name='password' onChange={(e) => setPassword(e.target.value)} />
-            <br />
-
-            <label>Confirm Password</label>
-            <input type='password' name='password2' onChange={(e) => setPassword2(e.target.value)} />
-            <br />
-
-            <button>Register</button>
+        <div className='signup'>You're so close!
+            <p>Just one more click </p>
+            <p>to add some spice</p>
+            <p>to your life.</p>
             
-            <p>{message}</p>
-        </form>
+        </div>
+        
+        <div>
+            <form className='registerform' onSubmit={(e) => handleSubmit(e)}>
+                <h1>Create Account</h1>
+                <label>Email</label>
+                <input name='email' onChange={(e) => setEmail(e.target.value)} />
+                <br />
+                <label>Password</label>
+                <input type='password' name='password' onChange={(e) => setPassword(e.target.value)} />
+                <br />
+                <label>Confirm Password</label>
+                <input type='password' name='password2' onChange={(e) => setPassword2(e.target.value)} />
+                <br />
+                <button>Register</button>
+            
+                <p>{message}</p>
+            </form>
+        </div>
     </div>
 }

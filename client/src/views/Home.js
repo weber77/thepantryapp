@@ -6,22 +6,19 @@ export default function Home() {
     const [searchTerm, setSearchTerm] = useState('')
 
 
-    return <div class='splashscreen-wrapper'>
-        <div>
-
-            <form >
-                <input placeholder="let's find something tasty" 
+    return <div className='splashscreen-wrapper'>
+        <div className='homepageform'>
+            <p className='homepagetext'>Let's get started!</p>
+                <input placeholder="Type an ingredient here" 
                 onChange={(e) => setSearchTerm(e.target.value)}
-                style={{width:'150px'}}
+                style={{width:'160px', margin: '5px', padding: '15px 10px', borderRadius: '10px'}}
                  />
                 <Link to={{
                     pathname: '/recipes',
                     search: searchTerm
                 }}>
-                    <button type='submit' style={{ margin: '0px 5px' }}>Search</button>
+                    <button className='searchBtn' type='submit'>Search</button>
                 </Link>
-            </form>
-
         </div>
 
     </div>
