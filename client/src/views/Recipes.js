@@ -21,7 +21,9 @@ export default function Recipes(props) {
         const url = `https://api.edamam.com/api/recipes/v2?type=public&beta=true&q=${locSearch
             ? locationSearch
             : searchTerm}&app_id=${process.env.REACT_APP_EDAMAM_APP_ID}&app_key=${process.env.REACT_APP_EDAMAM_APP_KEY}`
-        const res = await axios.get(url)
+        const res = await axios.get(url, {
+            headers: {'Origin': 'https://thepantryapp.herokuapp.com/'}
+        })
         setRecipes(res.data.hits)
         try {
 
