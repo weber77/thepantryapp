@@ -1,5 +1,5 @@
 const URL =
-    window.location.hostname === 'localhost' ? 'http://localhost:4040' : 'http://178.128.41.68'
+    window.location.hostname === 'localhost' ? 'http://localhost:4040' : 'https://thepantryapp.herokuapp.com/'
 
 export {
     URL
