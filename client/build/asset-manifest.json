@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.ce7df764.css",
-    "main.js": "/static/js/main.c10f6cf3.js",
+    "main.css": "/static/css/main.4c944b45.css",
+    "main.js": "/static/js/main.b1b980c6.js",
     "static/js/787.de82a657.chunk.js": "/static/js/787.de82a657.chunk.js",
     "static/media/spices.jpg": "/static/media/spices.5af249da2413dbac80cb.jpg",
     "static/media/thermopro-potroast-splashscreen.jpg": "/static/media/thermopro-potroast-splashscreen.366082049f7e05d88f36.jpg",
     "static/media/katie-smith-veg-splashscreen.jpg": "/static/media/katie-smith-veg-splashscreen.1442271df062908e878c.jpg",
     "index.html": "/index.html",
-    "main.ce7df764.css.map": "/static/css/main.ce7df764.css.map",
-    "main.c10f6cf3.js.map": "/static/js/main.c10f6cf3.js.map",
+    "main.4c944b45.css.map": "/static/css/main.4c944b45.css.map",
+    "main.b1b980c6.js.map": "/static/js/main.b1b980c6.js.map",
     "787.de82a657.chunk.js.map": "/static/js/787.de82a657.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ce7df764.css",
-    "static/js/main.c10f6cf3.js"
+    "static/css/main.4c944b45.css",
+    "static/js/main.b1b980c6.js"
   ]
 }
