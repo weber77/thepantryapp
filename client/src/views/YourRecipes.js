@@ -18,7 +18,7 @@ export default function YourRecipes(props) {
         try {
             const test = ingredients.filter(ing => ing.check === true).map((item, i) => item.name)
             console.log(test)
-            const url = `https://cors-anywhere.herokuapp.com/https://api.edamam.com/api/recipes/v2?type=public&beta=true&q=${test}&app_id=${process.env.REACT_APP_EDAMAM_APP_ID}&app_key=${process.env.REACT_APP_EDAMAM_APP_KEY}`
+            const url = `https://api.edamam.com/api/recipes/v2?type=public&beta=true&q=${test}&app_id=${process.env.REACT_APP_EDAMAM_APP_ID}&app_key=${process.env.REACT_APP_EDAMAM_APP_KEY}`
             const res = await axios.get(url, {
                 headers: {'Origin': 'https://api.edamam.com/api/recipes/v2?type=public&beta=true&q=${test}&app_id=${process.env.REACT_APP_EDAMAM_APP_ID}&app_key=${process.env.REACT_APP_EDAMAM_APP_KEY}'}
             })

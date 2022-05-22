@@ -1,18 +1,18 @@
 {
   "files": {
     "main.css": "/static/css/main.4c944b45.css",
-    "main.js": "/static/js/main.419360b4.js",
+    "main.js": "/static/js/main.be649c86.js",
     "static/js/787.de82a657.chunk.js": "/static/js/787.de82a657.chunk.js",
     "static/media/spices.jpg": "/static/media/spices.5af249da2413dbac80cb.jpg",
     "static/media/thermopro-potroast-splashscreen.jpg": "/static/media/thermopro-potroast-splashscreen.366082049f7e05d88f36.jpg",
     "static/media/katie-smith-veg-splashscreen.jpg": "/static/media/katie-smith-veg-splashscreen.1442271df062908e878c.jpg",
     "index.html": "/index.html",
     "main.4c944b45.css.map": "/static/css/main.4c944b45.css.map",
-    "main.419360b4.js.map": "/static/js/main.419360b4.js.map",
+    "main.be649c86.js.map": "/static/js/main.be649c86.js.map",
     "787.de82a657.chunk.js.map": "/static/js/787.de82a657.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4c944b45.css",
-    "static/js/main.419360b4.js"
+    "static/js/main.be649c86.js"
   ]
 }
