@@ -10,7 +10,7 @@ import EditProfile from './views/EditProfile.js'
 import Pantry from './views/Pantry.js'
 import NavBar from './components/NavBar.js'
 
-import { URL } from './config'
+import { URL } from './config.js'
 
 export default function App() {
 
