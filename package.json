@@ -22,5 +22,6 @@
         "mongoose": "^6.2.1",
         "n": "^9.1.0",
         "validator": "^13.7.0"
-    }
+    },
+    "homepage": "https://greeninkpen.github.io/thepantryapp"
 }
