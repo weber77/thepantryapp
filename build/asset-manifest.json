@@ -1,0 +1,18 @@
+{
+  "files": {
+    "main.css": "/thepantryapp/static/css/main.78460de8.css",
+    "main.js": "/thepantryapp/static/js/main.c83117df.js",
+    "static/js/496.5767ab63.chunk.js": "/thepantryapp/static/js/496.5767ab63.chunk.js",
+    "static/media/spices.jpg": "/thepantryapp/static/media/spices.5af249da2413dbac80cb.jpg",
+    "static/media/thermopro-potroast-splashscreen.jpg": "/thepantryapp/static/media/thermopro-potroast-splashscreen.366082049f7e05d88f36.jpg",
+    "static/media/katie-smith-veg-splashscreen.jpg": "/thepantryapp/static/media/katie-smith-veg-splashscreen.1442271df062908e878c.jpg",
+    "index.html": "/thepantryapp/index.html",
+    "main.78460de8.css.map": "/thepantryapp/static/css/main.78460de8.css.map",
+    "main.c83117df.js.map": "/thepantryapp/static/js/main.c83117df.js.map",
+    "496.5767ab63.chunk.js.map": "/thepantryapp/static/js/496.5767ab63.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.78460de8.css",
+    "static/js/main.c83117df.js"
+  ]
+}
