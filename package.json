@@ -29,5 +29,9 @@
     "react-scripts": "^5.0.1",
     "validator": "^13.7.0"
   },
-  "homepage": "https://greeninkpen.github.io/thepantryapp"
+  "homepage": "https://greeninkpen.github.io/thepantryapp",
+  "browserslist": [
+    "defaults and supports es6-module",
+    "maintained node versions"
+  ]
 }
