@@ -4,8 +4,6 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    // "test": "echo \"Error: no test specified\" && exit 1",
-    // "start": "cd ./server && node server.js",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
@@ -20,7 +18,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "argon2": "^0.27.2",
+    "argon2": "^0.27.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.2",
@@ -28,6 +26,7 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.2.1",
     "n": "^9.1.0",
+    "react-scripts": "^5.0.1",
     "validator": "^13.7.0"
   },
   "homepage": "https://greeninkpen.github.io/thepantryapp"
